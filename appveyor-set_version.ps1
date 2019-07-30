@@ -8,7 +8,6 @@ if ($env:APPVEYOR_REPO_TAG -eq $true) {
 
 Write-Output "Checking tag for SemVer naming"
 $regex = new-object System.Text.RegularExpressions.Regex ('v(?<version>(?<major>[0-9]+).(?<minor>[0-9]+).(?<patch>[0-9]+)-?(?<prerelease>.+)?)', [System.Text.RegularExpressions.RegexOptions]::MultiLine)
-$version = $null
 $match = $regex.Match($tagName)
 if($match.Success) {
   Write-Output "SemVer naming found"
