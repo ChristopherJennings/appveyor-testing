@@ -6,4 +6,4 @@ npm i
 
 npm run build
 
-cd ..\
+cd %APPVEYOR_BUILD_FOLDER%
