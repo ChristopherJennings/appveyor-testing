@@ -1,6 +1,6 @@
 dotnet restore
 
-cd my-vue-app
+cd .\my-vue-app
 
 npm i
 

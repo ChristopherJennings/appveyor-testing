@@ -6,7 +6,7 @@ if ($env:APPVEYOR_REPO_TAG -eq $true) {
   $match = $regex.Match($env:APPVEYOR_REPO_TAG_NAME)
   if($match.Success) {
     Write-Output "SemVer naming found"
-    $version = $match.Groups["version"].Value + "+build.{build}"
+    $version = $match.Groups["version"].Value + "+build.$env:APPVEYOR_BUILD_ID"
     Write-Output "Changing version '$env:APPVEYOR_BUILD_VERSION' to '$version'"
     Update-AppveyorBuild -Version "$version"
   }
