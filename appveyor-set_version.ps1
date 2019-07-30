@@ -13,7 +13,7 @@ $match = $regex.Match($tagName)
 if($match.Success) {
   Write-Output "SemVer naming found"
   $env:CurrentVersion = $match.Groups["version"].Value
-  $versionWithBuild =  + "+build.$env:APPVEYOR_BUILD_ID"
+  $versionWithBuild = $env:CurrentVersion + "+build.$env:APPVEYOR_BUILD_ID"
   Write-Output "Changing version '$env:APPVEYOR_BUILD_VERSION' to '$versionWithBuild'"
   Update-AppveyorBuild -Version "$version+"
 }
