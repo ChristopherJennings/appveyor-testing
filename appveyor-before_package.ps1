@@ -21,6 +21,6 @@ Copy-Item ".\my-vue-app\dist\*" -Recurse -Destination ".\publish\dist\"
 
 # Create archive & push to Appveyor
 
-7z a appveyortest-$Env:APPVEYOR_BUILD_VERSION.zip .\publish\*
+7z a appveyortest-$env:CurrentVersion.zip .\publish\*
 
-appveyor PushArtifact appveyortest-$Env:APPVEYOR_BUILD_VERSION.zip
+appveyor PushArtifact appveyortest-$env:CurrentVersion.zip
