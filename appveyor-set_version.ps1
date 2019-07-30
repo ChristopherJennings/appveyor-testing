@@ -15,5 +15,5 @@ if($match.Success) {
   $env:CurrentVersion = $match.Groups["version"].Value
   $versionWithBuild = $env:CurrentVersion + "+build.$env:APPVEYOR_BUILD_ID"
   Write-Output "Changing version '$env:APPVEYOR_BUILD_VERSION' to '$versionWithBuild'"
-  Update-AppveyorBuild -Version "$version"
+  Update-AppveyorBuild -Version "$versionWithBuild"
 }
