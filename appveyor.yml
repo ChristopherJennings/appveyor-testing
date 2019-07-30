@@ -1,11 +1,11 @@
 image: Visual Studio 2019
 before_build:
   - ps: .\appveyor-set_version.ps1
-  - cmd: appveyor-before_build.cmd
+  - cmd: .\appveyor-before_build.cmd
 build:
   verbosity: minimal
 before_package:
-  - cmd: appveyor-before_package.cmd
+  - cmd: .\appveyor-before_package.cmd
 deploy:
   - provider: Environment
     name: AV Test Releases
