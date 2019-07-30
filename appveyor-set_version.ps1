@@ -11,8 +11,12 @@ $regex = new-object System.Text.RegularExpressions.Regex ('v(?<version>(?<major>
 $match = $regex.Match($tagName)
 if($match.Success) {
   Write-Output "SemVer naming found"
-  $env:CurrentVersion = $match.Groups["version"].Value
-  $versionWithBuild = $env:CurrentVersion + "+build.$env:APPVEYOR_BUILD_ID"
-  Write-Output "Changing version '$env:APPVEYOR_BUILD_VERSION' to '$versionWithBuild'"
-  Update-AppveyorBuild -Version "$versionWithBuild"
+  $version = $match.Groups["version"].Value
+
+  if ($env:APPVEYOR_REPO_TAG -ne $true) {
+    $version = $version + "+devbuild.$env:APPVEYOR_BUILD_NUMBER"
+  }
+
+  Write-Output "Changing version '$env:APPVEYOR_BUILD_VERSION' to '$version'"
+  Update-AppveyorBuild -Version "$version"
 }
