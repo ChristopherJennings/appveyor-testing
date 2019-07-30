@@ -1,6 +1,6 @@
 image: Visual Studio 2019
 before_build:
-  - ps: appveyor-set_version.ps1
+  - ps: .\appveyor-set_version.ps1
   - cmd: appveyor-before_build.cmd
 build:
   verbosity: minimal
