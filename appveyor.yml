@@ -5,7 +5,7 @@ before_build:
 build:
   verbosity: minimal
 before_package:
-  - ps: pwd
+  - ps: cd $env:APPVEYOR_BUILD_FOLDER
   - ps: .\appveyor-before_package.ps1
 deploy:
   - provider: Environment
