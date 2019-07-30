@@ -7,3 +7,5 @@ npm i
 npm run build
 
 cd %APPVEYOR_BUILD_FOLDER%
+
+echo %APPVEYOR_BUILD_FOLDER%
