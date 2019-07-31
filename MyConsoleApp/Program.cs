@@ -6,7 +6,7 @@ namespace MyConsoleApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Press Enter to Exit");
+            Console.WriteLine("Press Enter to Exit!");
             Console.ReadLine();
         }
     }
