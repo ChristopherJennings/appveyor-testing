@@ -1,6 +1,6 @@
 Write-Output "Checking Tag Version"
-$env:CurrentVersion = $env:APPVEYOR_BUILD_VERSION
 $env:SEMVER_VERSION = $env:APPVEYOR_BUILD_VERSION
+$env:DOTNET_VERSION = $env:APPVEYOR_BUILD_VERSION
 $tagName = & git describe --abbrev=0 --tags
 
 if ($env:APPVEYOR_REPO_TAG -eq $true) {
@@ -23,7 +23,7 @@ if($match.Success) {
     $env:SEMVER_VERSION = "$versionwithprerelease+dev.build.$env:APPVEYOR_BUILD_NUMBER"
   }
 
-  Write-Output "Changing version '$env:APPVEYOR_BUILD_VERSION' to '$dotNetVersion' based on tag"
-  Update-AppveyorBuild -Version "$dotNetVersion"
-  Write-Output "SemVer is: '$env:SEMVER_VERSION'"
+  Write-Output "Changing version '$env:APPVEYOR_BUILD_VERSION' to '$env:SEMVER_VERSION' based on tag"
+  Update-AppveyorBuild -Version "$env:SEMVER_VERSION"
+  Write-Output "DotNet version is: '$env:DOTNET_VERSION'"
 }
