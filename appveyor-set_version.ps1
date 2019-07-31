@@ -15,10 +15,11 @@ if($match.Success) {
   $version = $match.Groups["version"].Value
   $versionwithprerelease = $match.Groups["versionwithprerelease"].Value
 
-  $dotNetVersion = "$version.$env:APPVEYOR_BUILD_NUMBER"
+  $env:DOTNET_VERSION = "$version.$env:APPVEYOR_BUILD_NUMBER"
 
   if ($env:APPVEYOR_REPO_TAG -eq $true) {
     $env:SEMVER_VERSION = $versionwithprerelease
+
   } else {
     $env:SEMVER_VERSION = "$versionwithprerelease+dev.build.$env:APPVEYOR_BUILD_NUMBER"
   }
