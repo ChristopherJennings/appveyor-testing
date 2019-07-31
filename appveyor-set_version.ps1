@@ -19,7 +19,6 @@ if($match.Success) {
 
   if ($env:APPVEYOR_REPO_TAG -eq $true) {
     $env:SEMVER_VERSION = $versionwithprerelease
-
   } else {
     $env:SEMVER_VERSION = "$versionwithprerelease+dev.build.$env:APPVEYOR_BUILD_NUMBER"
   }
